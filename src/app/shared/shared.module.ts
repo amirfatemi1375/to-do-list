@@ -8,6 +8,6 @@ import { NavComponent } from './components/nav/nav.component';
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, NavComponent],
   imports: [CommonModule, MaterialModule],
-  exports: [HeaderComponent, FooterComponent, NavComponent],
+  exports: [HeaderComponent, FooterComponent, NavComponent, MaterialModule],
 })
 export class SharedModule {}

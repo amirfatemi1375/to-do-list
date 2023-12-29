@@ -1,0 +1,14 @@
+<div>
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile colspan="4" rowspan="4">
+      <mat-card>
+        <mat-card-title>
+          {{ (mainList$ | async)?.title }}
+        </mat-card-title>
+        <mat-card-content>
+          {{ (mainList$ | async)?.date }}
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

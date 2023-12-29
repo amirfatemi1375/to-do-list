@@ -1,45 +1,51 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiResponse } from '../base/base.model';
 import { Observable } from 'rxjs';
+import { baseUrl } from '../../config/constant/base-url';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiHttpService<T> {
+export class ApiHttpService {
   constructor(private httpClient: HttpClient) {}
-  get(url: string, params?: any): Observable<ApiResponse<T>> {
+  get<T>(url: string, params?: any): Observable<T> {
+    return this.httpClient.get<T>(baseUrl + url, {
+      params: new HttpParams({ fromObject: params }),
+    });
+  }
+
+  getAll<T>(url: string, params?: any): Observable<T> {
     return this.httpClient
-      .get<any>(url, { params: new HttpParams({ fromObject: params }) })
+      .get<T>(baseUrl + url, { params: new HttpParams({ fromObject: params }) })
       .pipe();
   }
 
-  getAll<T>(url: string, params?: any) {
+  post<T>(url: string, data: any, params?: any): Observable<T> {
     return this.httpClient
-      .get<T>(url, { params: new HttpParams({ fromObject: params }) })
+      .post<T>(baseUrl + url, data, {
+        params: new HttpParams({ fromObject: params }),
+      })
       .pipe();
   }
 
-  post<T>(url: string, data: any, params?: any) {
+  delete(url: string, params?: any) {
     return this.httpClient
-      .post<T>(url, data, { params: new HttpParams({ fromObject: params }) })
+      .delete(baseUrl + url, { params: new HttpParams({ fromObject: params }) })
       .pipe();
   }
 
-  delete(url: string, data: any, params?: any) {
+  put<T>(url: string, data: any, params?: any): Observable<T> {
     return this.httpClient
-      .delete(url, { params: new HttpParams({ fromObject: params }) })
+      .put<T>(baseUrl + url, data, {
+        params: new HttpParams({ fromObject: params }),
+      })
       .pipe();
   }
 
-  put<T>(url: string, data: any, params?: any) {
+  patch<T>(url: string, data: any, params?: any): Observable<T> {
     return this.httpClient
-      .put<T>(url, data, { params: new HttpParams({ fromObject: params }) })
-      .pipe();
-  }
-
-  patch<T>(url: string, data: any, params?: any) {
-    return this.httpClient
-      .put<T>(url, data, { params: new HttpParams({ fromObject: params }) })
+      .put<T>(baseUrl + url, data, {
+        params: new HttpParams({ fromObject: params }),
+      })
       .pipe();
   }
 }

@@ -6,5 +6,6 @@ import { CustomLayoutComponent } from './custom-layout.component';
 @NgModule({
   declarations: [CustomLayoutComponent],
   imports: [CommonModule, SharedModule],
+  exports: [CustomLayoutComponent],
 })
 export class CustomLayoutModule {}
