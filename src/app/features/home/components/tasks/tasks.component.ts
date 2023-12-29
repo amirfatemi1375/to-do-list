@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { ApiHttpService } from '../../../../core/services/api-http.service';
 import { Observable } from 'rxjs';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TASK } from '../../../../config/constant/api-address';
 
 @Component({
   selector: 'app-tasks',
@@ -23,15 +24,22 @@ export class TasksComponent implements OnInit {
   }
   initForm() {
     this.form = this.fb.group({
-      title: [''],
+      title: ['', Validators.required],
     });
   }
   getTasks() {
-    this.dataSource$ = this.ApiHttpService.get('tasks');
+    this.dataSource$ = this.ApiHttpService.get(TASK);
   }
   addTask() {
-    this.ApiHttpService.post('tasks', this.form.value).subscribe((res) => {
-      this;
+    if (this.form.invalid) {
+      return;
+    }
+    this.ApiHttpService.post(TASK, this.form.value).subscribe((res) => {
+      this.form.reset();
+      this.getTasks();
     });
+  }
+  inputErrors(controlName: string, errorName: string) {
+    return this.form.controls[controlName].hasError(errorName);
   }
 }

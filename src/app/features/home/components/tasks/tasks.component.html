@@ -4,6 +4,9 @@
       <mat-form-field class="example-full-width">
         <mat-label>Title</mat-label>
         <input type="text" matInput formControlName="title" />
+        <mat-error *ngIf="inputErrors('title', 'required')">
+          please enter Title
+        </mat-error>
       </mat-form-field>
       <button mat-button color="primary" (click)="addTask()">Save</button>
     </form>
