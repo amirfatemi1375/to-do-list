@@ -5,9 +5,9 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from '../../shared/shared.module';
 import { CustomLayoutModule } from '../../layout/custom-layout/custom-layout.module';
 import { DailyListComponent } from './components/daily-list/daily-list.component';
-import { MaterialModule } from '../../shared/modules/material.module';
+import { TasksComponent } from './components/tasks/tasks.component';
 @NgModule({
-  declarations: [HomeComponent, DailyListComponent],
+  declarations: [HomeComponent, DailyListComponent, TasksComponent],
   imports: [CommonModule, SharedModule, CustomLayoutModule, HomeRoutingModule],
 })
 export class HomeModule {}
