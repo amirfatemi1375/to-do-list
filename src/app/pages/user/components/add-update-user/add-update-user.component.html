@@ -1,0 +1,30 @@
+<app-custom-layout>
+  <span (click)="back()">back</span>
+  <mat-card>
+    <form [formGroup]="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name" />
+        <mat-error *ngIf="inputErrors('name', 'required')">
+          please enter name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput formControlName="lastName" />
+        <mat-error *ngIf="inputErrors('lastName', 'required')">
+          please enter Last Name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email" />
+        <mat-error *ngIf="inputErrors('email', 'required')">
+          please enter email
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-button color="primary" (click)="submit()">Save</button>
+    </form>
+  </mat-card>
+</app-custom-layout>

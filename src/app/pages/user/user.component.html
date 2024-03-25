@@ -1,0 +1,12 @@
+<app-custom-layout>
+  <div>
+    <button mat-button color="primary" (click)="goToAddUser()">Add User</button>
+  </div>
+
+  <app-user-list
+    (editEmit)="editUser($event)"
+    (deleteEmit)="deleteUser($event)"
+    [displayedColumns]="displayedColumns"
+    [dataSource]="dataSource"
+  ></app-user-list>
+</app-custom-layout>

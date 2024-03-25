@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DailyListComponent } from './daily-list.component';
+import { UserListComponent } from './user-list.component';
 
-describe('DailyListComponent', () => {
-  let component: DailyListComponent;
-  let fixture: ComponentFixture<DailyListComponent>;
+describe('UserListComponent', () => {
+  let component: UserListComponent;
+  let fixture: ComponentFixture<UserListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DailyListComponent]
+      declarations: [UserListComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DailyListComponent);
+    fixture = TestBed.createComponent(UserListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
